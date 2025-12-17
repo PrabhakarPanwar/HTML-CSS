@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Move</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      background-color: rgb(0, 255, 255);
+      height: 100vh;
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" onmousemove="moving(event)">
+    <img src="../img/demonslayer.jpg" alt="">
+  </div>
+
+  <script>
+    const imgg = document.querySelector("img");
+
+    function moving(e) {
+      imgg.style.top = e.clientY + "px";
+      imgg.style.left = e.clientX + "px";
+    }
+  </script>
+</body>
+</html>

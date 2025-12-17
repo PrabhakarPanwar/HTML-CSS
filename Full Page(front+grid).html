@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<style>
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		background-image: url("image/background.jpg");
+		background-size: cover;
+		background-position: left 50% top 40%;
+	}
+
+	/* nav styling */
+	nav {
+		padding: 40px;
+		color: antiquewhite;
+		display: flex;
+		justify-content: space-between;
+		font-size: 20px;
+	}
+
+	.rightnav {
+		display: flex;
+		gap: 40px;
+
+	}
+
+	/* center styling */
+
+	.heading h1 {
+		color: antiquewhite;
+		font-size: 55px;
+		margin-top: 110px;
+		margin-bottom: 50px;
+		text-align: center;
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: none;
+		color: antiquewhite;
+	}
+
+	.box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 25px;
+		width: 65rem;
+		background-color: antiquewhite;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		padding: 12px 40px;
+		transform: translate(15rem, 0);
+	}
+
+	.mid {
+		display: flex;
+		flex-direction: column;
+		font-weight: 600;
+		gap: 5px;
+	}
+
+	.mid input {
+		border: none;
+		outline: none;
+		border-radius: 5px;
+		padding-left: 5px;
+	}
+
+	button {
+		width: 150px;
+		height: 35px;
+		background-color: red;
+		color: antiquewhite;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+		font-weight: 700;
+		outline: none;
+	}
+
+	/* card styling */
+
+
+	.container {
+		display: grid;
+		grid-template-rows: repeat(2, 500px);
+		grid-template-columns: repeat(4, auto);
+		gap: 20px;
+		padding: 60px;
+	}
+
+	.card {
+		background-position: center;
+		background-size: cover;
+		border-radius: 10px;
+	}
+
+	.card h4 {
+		border-radius: 10px;
+		width: 50px;
+		padding: 5px;
+		background-color: skyblue;
+		color: pink;
+		text-align: center;
+	}
+
+	.para {
+		color: orange;
+		margin: 5px;
+	}
+
+	.space {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 10px;
+	}
+
+	.first {
+		background-image: url("image/cod.bmp");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-color: black;
+		grid-area: 1/1/3/2;
+	}
+
+	.second {
+		background-image: url("image/bo2.jpg");
+		grid-area: 1/2/2/4;
+
+	}
+
+	.third {
+		background-image: url("image/bo3.jpg");
+		grid-area: ;
+
+	}
+
+	.four {
+		background-image: url("image/bo4.png");
+		grid-area: ;
+
+	}
+
+	.five {
+		background-image: url("image/bo5.jpg");
+		grid-area: ;
+
+	}
+
+	.six {
+		background-image: url("image/bo6.jpg");
+		grid-area: ;
+
+	}
+
+	/* Footer styling */
+
+	footer {
+		color: white;
+		display: flex;
+		justify-content: space-evenly;
+		margin: 10px;
+		padding: 10px;
+	}
+
+	.foot {
+		gap: 10px;
+		list-style-type: none;
+		display: flex;
+		flex-direction: column;
+	}
+</style>
+
+<body>
+	<nav>
+		<h3>TourTravel</h3>
+		<div class="rightnav">
+			<a href="">Home</a>
+			<a href="">About Us</a>
+			<a href="">Packaging</a>
+			<a href="">Trending</a>
+			<a href="">Login</a>
+		</div>
+	</nav>
+	<div class="heading">
+		<h1>Exploring World with Us !</h1>
+	</div>
+	<div class="box">
+		<div class="mid">
+			<label>Where You Want To Go ?</label>
+			<input type="text" placeholder="Where You Want To Go ?"></input>
+		</div>
+		<div class="mid">
+			<label>Check In</label>
+			<input type="text" placeholder="Check In"></input>
+		</div>
+		<div class="mid">
+			<label>Check Out</label>
+			<input type="text" placeholder="Check Out"></input>
+		</div>
+		<div class="mid">
+			<label>How Many Are you ?</label>
+			<input type="text" placeholder="Mention Guests"></input>
+		</div>
+		<button>Check Availability</button>
+	</div>
+	<div class="container">
+		<div class="first card space">
+		</div>
+		<div class="second card space">
+			<h4>4.7</h4>
+			<div class="para">
+				<h3>Black Ops 2</h3>
+				<p>2012</p>
+			</div>
+		</div>
+		<div class="third card space">
+			<h4>4.7</h4>
+			<div class="para">
+				<h3>Black Ops 3</h3>
+				<p>2015</p>
+			</div>
+
+		</div>
+		<div class="four card space">
+			<h4>4.7</h4>
+			<div class="para">
+				<h3>Black Ops 4</h3>
+				<p>2018</p>
+			</div>
+		</div>
+		<div class="five card space">
+			<h4>4.7</h4>
+			<div class="para">
+				<h3>Black Ops Cold War</h3>
+				<p>2020</p>
+			</div>
+		</div>
+		<div class="six card space">
+			<h4>4.7</h4>
+			<div class="para">
+				<h3>Black Ops 6</h3>
+				<p>2024</p>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="foot">
+			<h2>Looks</h2>
+			<a href="#">About Us</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Contact us</a>
+		</div>
+		<div class="foot">
+			<h2>Like</h2>
+			<a href="#">About Us</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Contact us</a>
+		</div>
+		<div class="foot">
+			<h2>Footer</h2>
+			<a href="#">About Us</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Contact us</a>
+		</div>
+		<div class="foot">
+			<h2>Right</h2>
+			<a href="#">About Us</a>
+			<a href="#">Privacy Policy</a>
+			<a href="#">Terms & Conditions</a>
+			<a href="#">Contact us</a>
+		</div>
+	</footer>
+</body>
+
+</html>

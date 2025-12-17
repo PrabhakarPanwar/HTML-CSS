@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation </title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    .whole {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sky {
+        background-image: url(./sky.jpg);
+        height: 100vh;
+        width: 100vw;
+        bottom: 0;
+        position: absolute;
+        bottom: 0%;
+    }
+
+    .city {
+        background-image: url(./city.png);
+        background-size: cover;
+        position: absolute;
+        height: 50vh;
+        width: 200%;
+        bottom: 20%;
+        animation: citymoving linear infinite 6s;
+    }
+
+    .road {
+        background-image: url(./road.jpg);
+        background-size: cover;
+        position: absolute;
+        height: 20vh;
+        width: 200%;
+        bottom: 0%;
+        animation: roadmoving linear infinite 6s;
+    }
+
+    .car {
+        background-image: url(./car.png);
+        background-size: contain;
+        position: absolute;
+        background-repeat: no-repeat;
+        height: 20vh;
+        width: 25vw;
+        bottom: 15%;
+        animation: carmoving infinite 6s linear;
+    }
+
+    .wheelleft {
+        background-image: url(./wheel.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        height: 10vh;
+        width: 5vw;
+        bottom: 5%;
+        left: 7%;
+        animation: rotation 1s linear infinite;
+    }
+
+    .wheelright {
+        background-image: url(./wheel.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        height: 10vh;
+        width: 5vw;
+        bottom: 5%;
+        left: 64%;
+        animation: rotation 0.5s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    @keyframes carmoving {
+        0% {
+            transform: translateX(-110%);
+        }
+
+        100% {
+            transform: translateX(400%);
+        }
+    }
+
+    @keyframes roadmoving {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes citymoving {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>
+
+<body>
+    <div class="whole">
+        <div class="sky"></div>
+        <div class="city"></div>
+        <div class="road"></div>
+        <div class="car">
+            <div class="wheelleft"></div>
+            <div class="wheelright"></div>
+        </div>
+    </div>
+</body>
+
+</html>

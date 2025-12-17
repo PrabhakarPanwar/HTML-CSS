@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .showing{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px 10px;
+    }
+
+    .checkfilter {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100vh;
+        padding: 10px 20px;
+        width: 20%;
+    }
+
+    .card {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+
+    img {
+        height: 250px;
+        width: 250px;
+        object-fit: cover;
+        object-position: center;
+        border: 4px solid;
+    }
+
+    input,
+    select {
+        padding: 5px 10px;
+        outline: none;
+        border-radius: 5px;
+    }
+    
+</style>
+
+<body>
+    <div class="container flex">
+        <input type="text" placeholder="typing.....">
+        <select>
+            <option value="all" selected>All</option>
+            <option value="Shooting">Shooting</option>
+            <option value="Action">Action</option>
+            <option value="Metroidvania">Metroidvania</option>
+            <option value="Stealth">Stealth</option>
+        </select>
+        <select>
+            <option value="all">Default</option>
+            <option value="l-h">Low to High</option>
+            <option value="h-l">High to Low</option>
+        </select>
+    </div>
+    <div class="box">
+        <div class="checkfilter">
+            <label for=""><input type="checkbox" value="Stealth">Best Selling</label>
+            <label for=""><input type="checkbox" value="Action">Award</label>
+            <label for=""><input type="checkbox" value="Shooting">Co-op</label>
+            <label for=""><input type="checkbox" value="Metroidvania">Indie</label>
+        </div>
+        <div class="showing"></div>
+    </div>
+
+
+
+    <script>
+
+        const game = [
+            {
+                "name": "Black Ops 2",
+                "company": "Treyarch",
+                "genre": "Shooting",
+                "image": "image/bo2.jpg",
+                "price": 10
+            },
+            {
+                "name": "Black Ops 3",
+                "company": "Treyarch",
+                "genre": "Shooting",
+                "image": "image/bo3.jpg",
+                "price": 20
+            },
+            {
+                "name": "Black Ops 6",
+                "company": "Treyarch",
+                "genre": "Shooting",
+                "image": "image/bo6.jpg",
+                "price": 30
+            },
+            {
+                "name": "God Of War 1",
+                "company": "Santa Monica",
+                "genre": "Action",
+                "image": "image/gow1.jpg",
+                "price": 40
+            },
+            {
+                "name": "God Of War 2",
+                "company": "Santa Monica",
+                "genre": "Action",
+                "image": "image/gow2.jpg",
+                "price": 50
+            },
+            {
+                "name": "God Of War 3",
+                "company": "Santa Monica",
+                "genre": "Action",
+                "image": "image/gow3.jpg",
+                "price": 60
+            },
+            {
+                "name": "H.K",
+                "company": "Team Cherry",
+                "genre": "Metroidvania",
+                "image": "image/hk1.jpg",
+                "price": 70
+            },
+            {
+                "name": "H.K: Silksong",
+                "company": "Team Cherry",
+                "genre": "Metroidvania",
+                "image": "image/hk2.png",
+                "price": 80
+            },
+            {
+                "name": "A.C",
+                "company": "Ubisoft",
+                "genre": "Stealth",
+                "image": "image/ac2.jpg",
+                "price": 90
+            },
+            {
+                "name": "A.C BrotherHood",
+                "company": "Ubisoft",
+                "genre": "Stealth",
+                "image": "image/ac-b.jpg",
+                "price": 100
+            },
+            {
+                "name": "A.C Revelation",
+                "company": "Ubisoft",
+                "genre": "Stealth",
+                "image": "image/ac-r.jpg",
+                "price": 110
+            }
+        ]
+        
+        const show = document.querySelector(".showing")
+        const inputt = document.querySelector("input")
+        const selectt = document.querySelectorAll("select")[0]
+        const sortt = document.querySelectorAll("select")[1]
+        const check = document.querySelectorAll(".checkfilter input[type='checkbox']")
+        let selectedcat = []
+        const reset = [...game]
+
+        //input
+
+        inputt.addEventListener("input", () => {
+            show.innerHTML = ""
+            const inputval = inputt.value.toLowerCase()
+            const filterr = game.filter(i => i.name.toLowerCase().includes(inputval) ||
+                i.company.toLowerCase().includes(inputval)
+            )
+            gameprint(filterr)
+        });
+
+        //select
+
+        selectt.addEventListener("change", () => {
+            show.innerHTML = ""
+            const selectval = selectt.value
+            const filterr = selectval.includes("all") ? [...game] : game.filter(i => i.genre.includes(selectval))
+            gameprint(filterr)
+        });
+
+
+        //sort
+
+        sortt.addEventListener("change", () => {
+            show.innerHTML = ""
+            const sortval = sortt.value
+
+            if (sortval == "all") {
+                gameprint(reset)
+            }
+            else if (sortval == "l-h") {
+                const filterr = game.sort((a, b) => a.price - b.price);
+                gameprint(filterr)
+            }
+            else if (sortval == "h-l") {
+                const filterr = game.sort((a, b) => b.price - a.price);
+                gameprint(filterr)
+            }
+        })
+
+
+        //check
+
+        check.forEach(i => {
+            i.addEventListener("change", () => {
+                show.innerHTML = ""
+
+                const checkval = i.value
+
+                if (i.checked) {
+                    selectedcat.push(checkval)
+                }
+                else {
+                    selectedcat = selectedcat.filter(ok => ok !== checkval)
+                }
+
+                if (selectedcat.length > 0) {
+                    const filterr = game.filter(item => selectedcat.includes(item.genre));
+                    gameprint(filterr);
+                }
+                else {
+                    gameprint(reset)
+                }
+
+            })
+        });
+
+
+
+        const gameprint = (p) => (p.map(i => {
+
+
+            //Creating Elements
+
+            const card = document.createElement("div")
+            card.className = "card"
+            const picture = document.createElement("img");
+            const title = document.createElement("h1");
+            const production = document.createElement("p");
+            const number = document.createElement("p");
+            const category = document.createElement("p");
+
+            //Filling Value
+
+            title.textContent = i.name;
+            production.textContent = i.company;
+            number.textContent = "₹" + i.price;
+            category.textContent = i.genre;
+            picture.src = i.image;
+
+            //Appending Elements
+
+            show.appendChild(card)
+            card.appendChild(picture);
+            card.appendChild(title);
+            card.appendChild(production);
+            card.appendChild(number);
+            card.appendChild(category);
+        })
+        )
+        gameprint(game)
+
+
+    </script>
+</body>
+
+</html>
